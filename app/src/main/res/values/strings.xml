@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Mi Club</string>
+    <string name="user_name">Usuario</string>
+    <string name="password">Contraseña</string>
+    <string name="log_in">Conectar</string>
+    <string name="remeber_password">Recordar contraseña?</string>
+</resources>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/portal"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context="com.example.MyClub.MainActivity">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border_radius"
+        android:orientation="vertical"
+        android:layout_margin="10dp"
+        >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/escudo"
+            android:layout_margin="10dp"
+            />
+
+
+        <EditText
+            android:inputType="textEmailAddress"
+            android:id="@+id/edit_text_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/user_name"
+            android:textAlignment="center"
+            android:background="@drawable/border_radius_edit_text"
+            android:layout_margin="10dp"
+            />
+
+        <EditText
+            android:id="@+id/edit_text_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/password"
+            android:textAlignment="center"
+            android:background="@drawable/border_radius_edit_text"
+            android:layout_margin="10dp"
+            />
+
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:background="@drawable/border_radius_buttons"
+            android:text="@string/log_in"
+            android:textColor="@color/blue"
+            />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/remeber_password"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"/>
+
+
+
+    </LinearLayout>
+
+</LinearLayout>
