@@ -1,11 +1,36 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.MyClub" parent="Theme.Material3.DayNight.NoActionBar">
+
+    <!-- Define tus colores -->
+    <!--<color name="orange">#FF5722</color>
+   <color name="blue">#03A9F4</color> Por ejemplo, para el color azul -->
+
+    <!-- Define tu estilo base -->
+    <style name="MyClub" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your light theme here. -->
         <item name="colorPrimary">@color/orange</item>
+        <item name="colorSecondary">@color/blue</item>
+        <item name="colorTertiary">@color/white</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="Theme.MyClub" parent="Base.Theme.MyClub" />
+    <!-- Defino el estilo de tus botones -->
+    <style name="Butons_Style" parent="Widget.AppCompat.Button">
+        <item name="android:textColor">?attr/colorSecondary</item> <!-- Define el color azul -->
+        <item name="android:background">@drawable/border_radius_buttons</item> <!-- Define el fondo con esquinas redondeadas -->
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+        <item name="android:padding">8dp</item> <!-- Agrega un padding para separar los elementos del borde del botón -->
+    </style>
 
-    <color name="orange">#FF5722</color>
+    <!-- Define el estilo de tus CheckBox -->
+    <style name="CheckboxStyle" parent="Widget.AppCompat.CompoundButton.CheckBox">
+        <!-- Cambia el tamaño del texto dentro del checkbox -->
+        <item name="android:textSize">16sp</item>
+        <!-- Puedes añadir más propiedades según tus necesidades -->
+    </style>
+
+
+    <!-- Define el tema MyClub que hereda de MyClub -->
+    <style name="Theme.MyClub" parent="MyClub" />
 </resources>

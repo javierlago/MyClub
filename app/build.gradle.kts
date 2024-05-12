@@ -40,9 +40,11 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0") // Opcional: si deseas usar Gson para la conversión de JSON
-    implementation("com.android.volley:volley:1.2.1")
-    implementation ("com.squareup.retrofit2:converter-scalars:2.9.0")
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson) // Opcional: si deseas usar Gson para la conversión de JSON
+    implementation(libs.volley)
+    implementation (libs.converter.scalars)
+    implementation(libs.okhttp)
+    implementation (libs.logging.interceptor)
 
 }

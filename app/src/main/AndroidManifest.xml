@@ -15,11 +15,18 @@
         android:theme="@style/Theme.MyClub"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+
         <activity
-            android:name="views.EntrenadorActivity"
+            android:name="com.example.MyClub.views.EntrenadorActivity"
             android:exported="false" />
         <activity
-            android:name="views.DirectivoActivity"
+            android:name="com.example.MyClub.views.AtletaActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.MyClub.views.DirectivoActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.MyClub.views.ListUserActivity"
             android:exported="false" />
         <activity
             android:name="com.example.MyClub.MainActivity"

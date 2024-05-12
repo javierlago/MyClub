@@ -4,4 +4,15 @@
     <string name="password">Contraseña</string>
     <string name="log_in">Conectar</string>
     <string name="remeber_password">Recordar contraseña?</string>
+    <string name="directivo">Directivo</string>
+    <string name="control_panel">Panel de control</string>
+    <string name="entrenado">Entrenador</string>
+    <string name="atleta">Atleta</string>
+    <string name="feed">Publicar Muro</string>
+    <string name="create">Crear</string>
+    <string name="edit">Editar</string>
+    <string name="delete">Borrar</string>
+    <string name="back">Volver</string>
+    <string name="delete_element">Borrar</string>
+    <string name="edit_element">Editar</string>
 </resources>
