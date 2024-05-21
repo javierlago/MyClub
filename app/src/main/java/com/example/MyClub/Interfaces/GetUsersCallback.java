@@ -1,9 +1,8 @@
-package com.example.MyClub.interfaces;
+package com.example.MyClub.Interfaces;
 
-import com.example.MyClub.models.User;
+import com.example.MyClub.Models.User;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public interface GetUsersCallback {
 

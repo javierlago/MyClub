@@ -1,11 +1,11 @@
-package com.example.MyClub.controlers;
+package com.example.MyClub.Controlers;
 
 import com.example.MyClub.Constantes.Constantes;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import com.example.MyClub.interfaces.UserApi;
+import com.example.MyClub.Interfaces.UserApi;
 
 
 

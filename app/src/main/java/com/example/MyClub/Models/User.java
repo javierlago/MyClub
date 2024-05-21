@@ -1,24 +1,34 @@
-package com.example.MyClub.models;
+package com.example.MyClub.Models;
 
-public class User {
+import java.io.Serializable;
+import java.util.Date;
+
+public class User implements Serializable {
 
 
     public User() {
     }
-
+    private int id;
     private String name;
     private String apellido;
     private String apellidosegundo;
-
     private String categoria;
-
     private String telefono;
     private String email;
     private String password;
     private String rol;
     private Float peso;
-    private Float talla;
-    private String fechaNacimiento;
+    private Float altura;
+    private Date fechaNacimiento;
+
+    //-----------------------------------------------------------------
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     public String getName() {
         return name;
     }
@@ -58,19 +68,19 @@ public class User {
         this.peso = peso;
     }
 
-    public Float getTalla() {
-        return talla;
+    public Float getAltura() {
+        return altura;
     }
 
-    public void setTalla(Float talla) {
-        this.talla = talla;
+    public void setAltura(Float altura) {
+        this.altura = altura;
     }
 
-    public String getFechaNacimiento() {
+    public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(String fechaNacimiento) {
+    public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
     public String getApellido() {

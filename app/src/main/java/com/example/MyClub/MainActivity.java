@@ -1,21 +1,24 @@
 package com.example.MyClub;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.MyClub.interfaces.LoginCallback;
-import com.example.MyClub.views.AtletaActivity;
-import com.example.MyClub.views.DirectivoActivity;
-import com.example.MyClub.views.EntrenadorActivity;
+import com.example.MyClub.Interfaces.LoginCallback;
+import com.example.MyClub.Atleta.AtletaActivity;
+import com.example.MyClub.Directivo.DirectivoActivity;
+import com.example.MyClub.Entrenador.EntrenadorActivity;
 import com.example.conectarapi.R;
 
-import com.example.MyClub.controlers.UserControler;
+import com.example.MyClub.Controlers.UserControler;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -26,6 +29,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button buttonLogin;
     UserControler userControler;
 
+    CheckBox checkBox;
+
+    String passwordSaved;
+
 
 
     @Override
@@ -35,8 +42,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         identifier();
         listeners();
         userControler  = new UserControler();
+        SharedPreferences sharedPreferences=  getSharedPreferences("MyAppPrefs",Context.MODE_PRIVATE);
+        passwordSaved = sharedPreferences.getString("log_activado",null);
+        if(passwordSaved != null){
+            String rol = sharedPreferences.getString("rol",null);
+            if(rol != null){
+            startSesionWithSavedPassword(rol);
+            }
 
-
+        }
     }
 
 
@@ -46,6 +60,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         editTextUser = findViewById(R.id.edit_text_user);
         editTextPassword = findViewById(R.id.edit_text_password);
         buttonLogin = findViewById(R.id.btn_login);
+        checkBox = findViewById(R.id.check_box_remeber_password);
     }
 
     public void listeners(){
@@ -65,9 +80,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
              userControler.login(editTextUser.getText().toString(), editTextPassword.getText().toString(), new LoginCallback() {
                  Intent intent ;
                  @Override
-                 public void onSuccess(String rol) {
+                 public void onSuccess(String rol,int userId) {
 
-                     if(!rol.equalsIgnoreCase("Credenciales inválidas")){
+                     if(!rol.equalsIgnoreCase(getResources().getString(R.string.credenciales_invalidas))){
+
+
+                         SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
+                         SharedPreferences.Editor editor = sharedPreferences.edit();
+                         editor.putInt("userId", userId);
+
+                         if(checkBox.isChecked()){
+                             editor.putString("rol",rol);
+                             editor.putString("log_activado","si");
+
+                         }
+                         editor.apply(); // o editor.commit();
+
+
+
                          switch (rol) {
                              case "directivo":
                                  intent = new Intent(MainActivity.this, DirectivoActivity.class);
@@ -81,6 +111,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                          }
                          startActivity(intent);
+                         finish();
 
                      }else{
                          Toast.makeText(MainActivity.this, rol, Toast.LENGTH_SHORT).show();
@@ -97,7 +128,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
             }else{
-                Toast.makeText(this, "Debes de rellenar los campos", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.debes_de_rellenar_los_campos, Toast.LENGTH_SHORT).show();
             }
 
 
@@ -106,14 +137,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
     }
-  // directivo
- // qparker@example.com
- // M5kiW8Ludp
-    // entrenador
- // crist.cristal@example.org
- // KyH9AEReSW
-    // atleta
-    // arobel@example.org
-    // tkqrj0v68c
+    public void startSesionWithSavedPassword(String rol){
+        Intent intent = null;
 
+        switch (rol) {
+            case "directivo":
+                intent = new Intent(MainActivity.this, DirectivoActivity.class);
+                break;
+            case "atleta":
+                intent = new Intent(MainActivity.this, AtletaActivity.class);
+                break;
+            case "entrenador":
+                intent = new Intent(MainActivity.this, EntrenadorActivity.class);
+                break;
+
+        }
+        startActivity(intent);
+        finish();
+
+
+    }
 }

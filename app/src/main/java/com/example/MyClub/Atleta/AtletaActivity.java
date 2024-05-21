@@ -1,4 +1,4 @@
-package com.example.MyClub.views;
+package com.example.MyClub.Atleta;
 
 import android.os.Bundle;
 

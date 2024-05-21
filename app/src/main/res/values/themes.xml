@@ -8,7 +8,7 @@
     <style name="MyClub" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your light theme here. -->
         <item name="colorPrimary">@color/orange</item>
-        <item name="colorSecondary">@color/blue</item>
+        <item name="colorSecondary">@color/black</item>
         <item name="colorTertiary">@color/white</item>
         <item name="android:textStyle">bold</item>
     </style>
@@ -22,6 +22,21 @@
         <item name="android:gravity">center_vertical|center_horizontal</item>
         <item name="android:padding">8dp</item> <!-- Agrega un padding para separar los elementos del borde del botón -->
     </style>
+    <!-- Estilo para las cabeceras -->
+    <style name="header_style" parent="MyClub">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:background">?attr/colorPrimary</item>
+        <item name="android:textSize">26sp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+    <!-- Estilo para los titulos de los campos a rellenar -->
+    <style name="fields_titles" parent="MyClub">
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 
     <!-- Define el estilo de tus CheckBox -->
     <style name="CheckboxStyle" parent="Widget.AppCompat.CompoundButton.CheckBox">
@@ -33,4 +48,10 @@
 
     <!-- Define el tema MyClub que hereda de MyClub -->
     <style name="Theme.MyClub" parent="MyClub" />
+    <style name="Theme.MyClub.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.MyClub.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.MyClub.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     card_view:cardUseCompatPadding="true"
-    card_view:cardElevation="4dp"
-    card_view:cardCornerRadius="3dp"
+    card_view:cardElevation="8dp"
+    card_view:cardCornerRadius="6dp"
     android:layout_margin="6dp">
     <LinearLayout
         android:id="@+id/liner_layout_card_view_users"
@@ -14,6 +14,16 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center">
+        <TextView
+            android:id="@+id/card_view_rol_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="Rol USer"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            />
         <TextView
             android:id="@+id/card_view_name_user"
             android:layout_width="match_parent"
@@ -35,15 +45,18 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_margin="5dp"
+            android:padding="5dp">
 
             <Button
-                android:id="@+id/edit_user"
+                android:id="@+id/card_view_btn_edit_user"
                 style="@style/Butons_Style"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="@string/edit_element" />
+                android:text="@string/edit_element"
+                android:layout_margin="5dp"/>
 
             <Button
 
@@ -52,27 +65,10 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="@string/delete_element"
-                android:id="@+id/delete_user" />
+                android:id="@+id/card_view_btn_delete_user"
+                android:layout_margin="5dp"/>
         </LinearLayout>
 
-
-
-
-
     </LinearLayout>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </androidx.cardview.widget.CardView>

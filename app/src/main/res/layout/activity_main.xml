@@ -57,6 +57,7 @@
             />
 
         <CheckBox
+            android:id="@+id/check_box_remeber_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/remeber_password"
