@@ -4,6 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -13,25 +16,30 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.example.MyClub.Adaptadores.ListUserAdapter;
+import com.example.MyClub.Constantes.Constantes;
 import com.example.MyClub.Controlers.UserControler;
+import com.example.MyClub.Directivo.DirectivoActivity;
 import com.example.MyClub.Interfaces.AdapterViewButtonClickListener;
 import com.example.MyClub.Interfaces.UserControllerCallback;
 import com.example.MyClub.Interfaces.DialogListener;
 import com.example.MyClub.Interfaces.GetUserById;
 import com.example.MyClub.Interfaces.GetUsersCallback;
 import com.example.MyClub.Models.User;
-import com.example.MyClub.Windows.DialogWindows;
+import com.example.MyClub.Dialogs.DialogWindows;
 import com.example.conectarapi.R;
 
 
 import java.util.ArrayList;
 
 
-public class ListUserActivity extends AppCompatActivity {
+public class ListUserActivity extends AppCompatActivity implements View.OnClickListener {
 
-
+    TextView txtTitle;
     RecyclerView recyclerView;
-    UserControler userControler = new UserControler();
+    UserControler userControler ;
+
+    Button btnCreateUser;
+    Button btnBack;
 
     int userLogedId;
 
@@ -42,6 +50,9 @@ public class ListUserActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         setContentView(R.layout.activity_list_user);
+        btnCreateUser = findViewById(R.id.btn_create_user);
+        btnBack = findViewById(R.id.btn_back);
+        listeners();
         // Recuperamos el String para que la llamada a la api sea diferente y asi
         // aprovechar la misma actividad para cargar los datos de cualquier tipo de usuario
         Intent intent = getIntent();
@@ -50,7 +61,9 @@ public class ListUserActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         SharedPreferences sharedPreferences=  getSharedPreferences("MyAppPrefs",Context.MODE_PRIVATE);
         userLogedId = sharedPreferences.getInt("userId",0);
-
+        userControler = new UserControler(this);
+        txtTitle = findViewById(R.id.header_text);
+        setHeader(route);
 
         userControler.getUsers(route, new GetUsersCallback() {
             @Override
@@ -138,8 +151,34 @@ public class ListUserActivity extends AppCompatActivity {
 
 
     }
+    public void listeners() {
+        btnCreateUser.setOnClickListener(this);
+        btnBack.setOnClickListener(this);
+    }
 
 
+
+    @Override
+    public void onClick(View v) {
+        if(v == btnCreateUser){
+            Intent intent = new Intent(ListUserActivity.this, CreateUserActivity.class);
+            intent.putExtra("ApiService", route);
+            startActivity(intent);
+        }else if(v == btnBack){
+            Intent intent = new Intent(ListUserActivity.this, DirectivoActivity.class);
+            startActivity(intent);
+    }
+}
+
+public void setHeader(String title){
+        String newTitle;
+        if(Constantes.getEntrenador(this).equalsIgnoreCase(title)){
+             newTitle = getResources().getString(R.string.list_user_header) + " " + title+ "es";
+        }else{
+             newTitle = getResources().getString(R.string.list_user_header) + " " + title+ "s";
+        }
+        txtTitle.setText(newTitle);
+}
 
 
 }

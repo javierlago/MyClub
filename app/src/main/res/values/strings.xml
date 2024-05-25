@@ -49,5 +49,18 @@
     <string name="inicio">Inicio</string>
     <string name="no_saved_changes_title">Cambios sin guardar</string>
     <string name="no_saved_changes_q">¿Cambios sin guardar estas seguro que deseas salir?</string>
+    <string name="create_user">Crear</string>
+    <string name="create_user_header">Crear</string>
+    <string name="entrenador">Entrenador</string>
+    <string name="error_route">Error al obtener ruta</string>
+    <string name="user_created">Usuario creando con exito</string>
+    <string name="fail_create_user">Fallo en la creacion del usuario</string>
+    <string name="create_user_warning_title">Aviso</string>
+    <string name="create_user_warning_message">Debes rellenar los campos para generar un usuario</string>
+    <string name="create_user_warning_message_email">Tu email debe tener el siguiente formato aaaaaa@aaaa.com</string>
+    <string name="create_user_warning_message_password">Tu contraseña debe tener al menos 8 caracteres</string>
+    <string name="list_user_header">Lista de</string>
+    <string name="create_date_warning_message">Por favor, introduce una fecha válida en el formato dd-MM-yyyy</string>
+    <string name="user_date_of_birth_txt_formart">dd-MM-yyyy</string>
 
 </resources>

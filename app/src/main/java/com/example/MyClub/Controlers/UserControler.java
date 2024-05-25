@@ -11,6 +11,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import com.example.MyClub.Constantes.Constantes;
 import com.example.MyClub.Interfaces.UserControllerCallback;
 import com.example.MyClub.Interfaces.GetUserById;
 import com.example.MyClub.Interfaces.GetUsersCallback;
@@ -28,9 +29,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/** @noinspection CallToPrintStackTrace*/
 public class UserControler {
 
-    private UserApi apiService= ApiClient.getUserApi();
+    private final UserApi apiService= ApiClient.getUserApi();
 
     String rol;
 
@@ -40,10 +42,14 @@ public class UserControler {
 
     String message;
 
+    Context context;
 
-
-    public UserControler() {
+    public UserControler(Context context) {
+        this.context = context;
     }
+
+
+
 
     public void login(String usuario, String password, LoginCallback callback){
 
@@ -56,9 +62,10 @@ public class UserControler {
         Call<ResponseBody> call = apiService.validateUser(usuario,password);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+            public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
                 if (response.isSuccessful()) {
                     try {
+                        assert response.body() != null;
                         String jsonResponse = response.body().string();
                         JSONObject jsonObject = new JSONObject(jsonResponse);
                         rol = jsonObject.getString("respuesta");
@@ -108,20 +115,15 @@ public class UserControler {
         Call<JsonObject> call;
         // manejar a la routa que deseamos llamar para obtener un listado diferebte
 
-        switch (route) {
-            case "directivo":
-                call = apiService.getUsersDirectivo();
-                break;
-            case "entrenador":
-                call = apiService.getUsersEntrenador();
-                break;
-            case "atleta":
-                call = apiService.getUsersAtleta();
-                break;
-            default:
-                // En caso de un valor de ruta no reconocido, manejarlo según sea necesario
-                getUsersCallback.onFailure("Ruta no válida");
-                return;
+        if (Constantes.getDirectivo(context).equalsIgnoreCase(route)) {
+            call = apiService.getUsersDirectivo();
+        } else if (Constantes.getEntrenador(context).equals(route)) {
+            call = apiService.getUsersEntrenador();
+        } else if (Constantes.getAtleta(context).equals(route)) {
+            call = apiService.getUsersAtleta();
+        } else {
+            getUsersCallback.onFailure(context.getResources().getString(R.string.error_route));
+            return;
         }
         call.enqueue(new Callback<JsonObject>() {
             @Override
@@ -144,7 +146,6 @@ public class UserControler {
             @Override
             public void onFailure(@NonNull Call<JsonObject> call, @NonNull Throwable t) {
                 getUsersCallback.onFailure(t.getMessage());
-
 
             }
         });
@@ -256,11 +257,44 @@ public class UserControler {
         });
 
 
-
     }
 
+    public void createUser(User user, UserControllerCallback userControllerCallback, Context context) {
 
+        Call<ResponseBody> call = apiService.createUser(user);
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
+                if (response.isSuccessful()) {
+                    try {
+                        ResponseBody responseBody = response.body();
+                        if (responseBody != null) {
+                            String jsonResponse = responseBody.string();
+                            JSONObject jsonObject = new JSONObject(jsonResponse);
+                            message = jsonObject.getString("message");
+                            userControllerCallback.onSucces(message);
+                        } else {
+                            userControllerCallback.onFailure("La respuesta no tiene cuerpo");
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        userControllerCallback.onFailure(e.getMessage());
+                    } catch (IOException e) {
+                        // Manejar error de lectura de respuesta
+                        e.printStackTrace();
+                    }
+                } else {
+                    userControllerCallback.onFailure(message);
+                }
 
+            }
 
+            @Override
+            public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
+                userControllerCallback.onFailure(context.getString(R.string.fail_create_user));
+            }
+        });
+
+    }
 
 }

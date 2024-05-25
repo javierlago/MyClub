@@ -73,6 +73,6 @@
 
     </GridLayout>
 
-    <include layout="@layout/tool_bar_directivo" />
+
 
 </LinearLayout>

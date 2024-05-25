@@ -26,25 +26,27 @@ public interface UserApi {
             @Field("password") String password
     );
 
-    @GET("user_index_directivo")
+    @GET("users/directivo")
     Call<JsonObject> getUsersDirectivo();
 
-    @GET("user_index_entrenador")
+    @GET("users/entrenador")
     Call<JsonObject> getUsersEntrenador();
 
-    @GET("user_index_atleta")
+    @GET("users/atleta")
     Call<JsonObject> getUsersAtleta();
 
-    @GET("user_get_by_id/{id}")
+    @GET("users/{id}")
     Call<JsonObject> getUserById(@Path("id") int userId);
 
-    @DELETE("user_delete/{id}")
+    @DELETE("users/{id}")
     Call<ResponseBody> deleteUserById(@Path("id") int userId);
 
 
+    @PUT("users/{id}")
+    Call<Void> updateUser(@Path("id") int id, @Body User user);
 
-        @PUT("user_update/{id}")
-        Call<Void> updateUser(@Path("id") int id, @Body User user);
+    @POST("users/create_user")
+    Call<ResponseBody> createUser(@Body User user);
 
 
 }

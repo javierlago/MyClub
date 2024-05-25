@@ -7,6 +7,7 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.MyClub.Constantes.Constantes;
 import com.example.MyClub.Views.ListUserActivity;
 import com.example.conectarapi.R;
 
@@ -16,6 +17,8 @@ public class DirectivoActivity extends AppCompatActivity implements View.OnClick
     Button botonGestionDirectivos;
     Button botonGestionEntrenadores;
     Button botonGestionAtletas;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,17 +40,17 @@ public class DirectivoActivity extends AppCompatActivity implements View.OnClick
         Intent intent;
         if (v == botonGestionDirectivos) {
             intent = new Intent(DirectivoActivity.this, ListUserActivity.class);
-            intent.putExtra("ApiService","directivo");
+            intent.putExtra("ApiService", Constantes.getDirectivo(this));
             startActivity(intent);
 
         } else if (v == botonGestionEntrenadores) {
             intent = new Intent(DirectivoActivity.this, ListUserActivity.class);
-            intent.putExtra("ApiService","entrenador");
+            intent.putExtra("ApiService",Constantes.getEntrenador(this));
             startActivity(intent);
 
         } else if (v == botonGestionAtletas) {
             intent = new Intent(DirectivoActivity.this, ListUserActivity.class);
-            intent.putExtra("ApiService","atleta");
+            intent.putExtra("ApiService",Constantes.getAtleta(this));
             startActivity(intent);
 
         }

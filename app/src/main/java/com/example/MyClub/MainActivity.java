@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.MyClub.Constantes.Constantes;
 import com.example.MyClub.Interfaces.LoginCallback;
 import com.example.MyClub.Atleta.AtletaActivity;
 import com.example.MyClub.Directivo.DirectivoActivity;
@@ -35,13 +36,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         identifier();
         listeners();
-        userControler  = new UserControler();
+        userControler  = new UserControler(this);
         SharedPreferences sharedPreferences=  getSharedPreferences("MyAppPrefs",Context.MODE_PRIVATE);
         passwordSaved = sharedPreferences.getString("log_activado",null);
         if(passwordSaved != null){
@@ -51,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
 
         }
+
     }
 
 
@@ -98,18 +102,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
-                         switch (rol) {
-                             case "directivo":
-                                 intent = new Intent(MainActivity.this, DirectivoActivity.class);
-                                 break;
-                             case "atleta":
-                                 intent = new Intent(MainActivity.this, AtletaActivity.class);
-                                 break;
-                             case "entrenador":
-                                 intent = new Intent(MainActivity.this, EntrenadorActivity.class);
-                                 break;
-
+                         if (Constantes.getDirectivo(MainActivity.this).equalsIgnoreCase(rol)) {
+                             intent = new Intent(MainActivity.this, DirectivoActivity.class);
+                         } else if (Constantes.getAtleta(MainActivity.this).equalsIgnoreCase(rol)) {
+                             intent = new Intent(MainActivity.this, AtletaActivity.class);
+                         } else if (Constantes.getEntrenador(MainActivity.this).equalsIgnoreCase(rol)) {
+                             intent = new Intent(MainActivity.this, EntrenadorActivity.class);
                          }
+
                          startActivity(intent);
                          finish();
 
@@ -140,20 +140,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void startSesionWithSavedPassword(String rol){
         Intent intent = null;
 
-        switch (rol) {
-            case "directivo":
-                intent = new Intent(MainActivity.this, DirectivoActivity.class);
-                break;
-            case "atleta":
-                intent = new Intent(MainActivity.this, AtletaActivity.class);
-                break;
-            case "entrenador":
-                intent = new Intent(MainActivity.this, EntrenadorActivity.class);
-                break;
-
+        if (Constantes.getDirectivo(MainActivity.this).equalsIgnoreCase(rol)) {
+            intent = new Intent(MainActivity.this, DirectivoActivity.class);
+        } else if (Constantes.getAtleta(MainActivity.this).equalsIgnoreCase(rol)) {
+            intent = new Intent(MainActivity.this, AtletaActivity.class);
+        } else if (Constantes.getEntrenador(MainActivity.this).equalsIgnoreCase(rol)) {
+            intent = new Intent(MainActivity.this, EntrenadorActivity.class);
         }
+
         startActivity(intent);
         finish();
+
 
 
     }
