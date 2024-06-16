@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/fields_titles"
+        android:id="@+id/text_nombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ergometro"
+        android:padding="5dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/text_series"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2" />
+
+        <Space
+            android:layout_width="5dp"
+            android:layout_height="match_parent"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="x" />
+
+        <Space
+            android:layout_width="5dp"
+            android:layout_height="match_parent"/>
+
+        <TextView
+            android:id="@+id/text_unidades"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="6000" />
+
+        <Space
+            android:layout_width="5dp"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/text_descripcion_unidades"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Metros" />
+
+        <Space
+            android:layout_width="5dp"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/text_descripcion_intensidad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="120 ffc" />
+
+    </LinearLayout>
+
+</LinearLayout>

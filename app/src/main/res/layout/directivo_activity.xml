@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/gradient">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/control_panel"
+        style="@style/Butons_Style"
+        android:padding="10dp"
+        android:layout_margin="10dp" />
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:columnCount="2"
+        android:rowCount="2"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        >
+
+
+
+
+        <LinearLayout
+            android:id="@+id/btn_gestion_directivo"
+            style="@style/Butons_Style"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:orientation="vertical"
+            android:layout_margin="5dp"
+            android:layout_marginLeft="0dp">
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@drawable/manager_button"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/directivo"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                android:padding="10dp"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/btn_gestion_entrenador"
+            style="@style/Butons_Style"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:orientation="vertical"
+            android:layout_margin="5dp"
+            android:layout_marginLeft="0dp">
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@drawable/training_button"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/entrenador"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                android:padding="10dp"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/btn_gestion_atleta"
+            style="@style/Butons_Style"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:orientation="vertical"
+            android:layout_margin="5dp"
+            android:layout_marginLeft="0dp">
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@drawable/athlete_button"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/atleta"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                android:padding="10dp"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/btn_wall"
+            style="@style/Butons_Style"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:orientation="vertical"
+            android:layout_margin="5dp"
+            android:layout_marginLeft="0dp">
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@drawable/post_button"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/feed"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                android:padding="10dp"/>
+
+        </LinearLayout>
+    </GridLayout>
+    <include layout="@layout/start_bar" />
+
+
+
+</LinearLayout>

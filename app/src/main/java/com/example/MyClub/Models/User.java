@@ -8,6 +8,7 @@ public class User implements Serializable {
 
     public User() {
     }
+
     private int id;
     private String name;
     private String apellido;
@@ -29,9 +30,11 @@ public class User implements Serializable {
     public void setId(int id) {
         this.id = id;
     }
+
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -83,6 +86,7 @@ public class User implements Serializable {
     public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
+
     public String getApellido() {
         return apellido;
     }

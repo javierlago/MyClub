@@ -1,0 +1,71 @@
+<!-- item_publicacion.xml -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="0dp">
+
+            <TextView
+                style="@style/header_style"
+                android:id="@+id/text_tipo_publicacion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="@dimen/post_title_size"
+                android:textAlignment="center"
+                android:text="@string/entrenamiento"/>
+
+            <TextView
+                style="@style/fields_titles"
+                android:id="@+id/text_titulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:text="Entrenamiento"
+                android:padding="5dp"/>
+
+            <TextView
+                android:id="@+id/text_descripcion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                android:padding="5dp"
+                android:text="Aqui iria la descripcion de la publicacion"/>
+
+            <LinearLayout
+                android:id="@+id/layout_ejercicios"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+                <!-- Aquí se inflarán dinámicamente las vistas de ejercicios -->
+            </LinearLayout>
+            <TextView
+               android:id="@+id/txt_post_date"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textAlignment="textEnd"
+                android:text="Fecha"
+                android:padding="5dp"/>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

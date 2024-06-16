@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public interface GetUsersCallback {
 
     void onSuccess(ArrayList<User> users);
+
     void onFailure(String errorMessage);
 
 }

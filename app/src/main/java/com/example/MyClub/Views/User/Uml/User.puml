@@ -1,0 +1,142 @@
+@startuml
+left to right direction
+
+
+package "MyClub.Views.User"{
+
+    class CreateUserActivity {
+        - userName: EditText
+        - firstSurname: EditText
+        - secondSurname: EditText
+        - category: EditText
+        - phoneNumber: EditText
+        - email: EditText
+        - weight: EditText
+        - height: EditText
+        - dayOfBirth: EditText
+        - password: EditText
+        - txtWeight: TextView
+        - txtHeight: TextView
+        - txtDayOfBirth: TextView
+        - txtCategory: TextView
+        - createUserTitle: TextView
+        - btnSaveChanges: Button
+        - btnStart: Button
+        - btnBack: Button
+        - checkBox_show_passwor: CheckBox
+        - userRol: String
+        - userRolApi: String
+        - intent: Intent
+        - dialogWindows: DialogWindows
+        - userController: UserControler
+        - sdf: SimpleDateFormat
+        + onCreate(savedInstanceState: Bundle): void
+        + initializeViews(): void
+        + changeHeader(userRolApi: String): void
+        + listeners(): void
+        + setUser(): boolean
+        + hideFields(userRolApi: String): void
+        + onClick(v: View): void
+        + getUser(): User
+    }
+
+    note right of MyClub.Views.User.CreateUserActivity
+        Esta actividad permite a los usuarios crear un
+        nuevo perfil en la aplicación. Dependiendo
+        del tipo de usuario, se mostrarán diferentes
+        campos en el formulario. Se pueden crear perfiles
+        de directivos, entrenadores y atletas. El usuario puede
+        ingresar información personal como nombre, apellidos,
+        número de teléfono, correo electrónico, peso, altura,
+        fecha de nacimiento y contraseña.
+    end note
+
+package "MyClub.Views.User" {
+
+    class EditUserActivity {
+        - userName: EditText
+        - firstSurname: EditText
+        - secondSurname: EditText
+        - category: EditText
+        - phoneNumber: EditText
+        - email: EditText
+        - weight: EditText
+        - height: EditText
+        - dayOfBirth: EditText
+        - password: EditText
+        - txtWeight: TextView
+        - txtHeight: TextView
+        - txtDayOfBirth: TextView
+        - txtCategory: TextView
+        - btnSaveChanges: Button
+        - btnStart: Button
+        - btnBack: Button
+        - checkBox_show_password: CheckBox
+        - user: User
+        - userControler: UserControler
+        - intent: Intent
+        - originalValues: String[]
+        - sdf: SimpleDateFormat
+        - dialogWindows: DialogWindows
+        - userRol: String
+        - userApiService: String
+        + onResume(): void
+        + initializeViews(): void
+        + hideFields(): void
+        + hideFieldsEntrenador(): void
+        + fillFields(user: User): void
+        + listeners(): void
+        + onClick(v: View): void
+        + saveOriginalValues(user: User): void
+        + getEditTextValue(index: int): String
+        + anyFieldChanged(): boolean
+    }
+
+    note right of MyClub.Views.User.EditUserActivity
+        Esta actividad permite editar la información de un usuario.
+        Dependiendo del rol del usuario,
+        ciertos campos pueden estar ocultos.
+        Los cambios en la información del usuario se guardan
+        y se actualizan en la base de datos cuando se
+        presiona el botón de guardar cambios. Se muestra un mensaje de
+        confirmación antes de guardar los cambios. También se
+        proporciona la funcionalidad para mostrar u ocultar la contraseña.
+    end note
+    @startuml
+    left to right direction
+
+    package "MyClub.Views.User" {
+
+        class ListUserActivity {
+            - txtTitle: TextView
+            - recyclerView: RecyclerView
+            - userControler: UserControler
+            - btnCreateUser: Button
+            - btnBack: Button
+            - userLogedId: int
+            - route: String
+            - userRol: String
+            - listUserAdapter: ListUserAdapter
+            + onResume(): void
+            + listeners(): void
+            + onClick(v: View): void
+            + setHeader(title: String): void
+        }
+
+        note right of MyClub.Views.User.ListUserActivity
+            Esta actividad muestra una lista de usuarios y
+            permite crear nuevos usuarios.
+            Dependiendo del rol del usuario,
+            se muestran botones para editar o eliminar usuarios.
+            También permite volver a la actividad anterior.
+        end note
+
+    }
+
+ListUserActivity ..|> AppCompatActivity
+EditUserActivity ..|> AppCompatActivity
+CreateUserActivity ..|> AppCompatActivity
+
+    @enduml
+
+

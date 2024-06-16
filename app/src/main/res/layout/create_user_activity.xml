@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient2"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?attr/colorPrimary"
+            android:padding="4dp"
+            android:src="@drawable/person_edit" />
+
+        <TextView
+            android:id="@+id/txt_create_user_title"
+            style="@style/header_style"
+            android:layout_width="0dp"
+            android:layout_weight="7"
+            android:text="@string/create_user_header" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="@color/black" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+            <!-- Nombre -->
+            <TextView
+                style="@style/fields_titles"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/user_name_txt" />
+
+
+            <EditText
+                android:id="@+id/edit_text_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/user_name_txt"
+                android:padding="10dp" />
+
+
+            <!-- Apellido -->
+            <TextView
+                style="@style/fields_titles"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/user_surname_txt" />
+
+            <EditText
+                android:id="@+id/edit_txt_first_surname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/user_surname_txt"
+                android:padding="10dp" />
+            <!-- Segundo apellido -->
+            <TextView
+                style="@style/fields_titles"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/user_second_surname_txt" />
+
+            <EditText
+                android:id="@+id/edti_txt_second_surname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/user_second_surname_txt"
+                android:padding="10dp" />
+            <!-- Categoria -->
+            <TextView
+                style="@style/fields_titles"
+                android:id="@+id/txt_category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/user_categori_txt" />
+
+            <EditText
+                android:id="@+id/edit_txt_category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/user_categori_txt"
+                android:padding="10dp" />
+            <!-- Telefono -->
+            <TextView
+                style="@style/fields_titles"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/user_phone" />
+
+            <EditText
+                android:id="@+id/edit_txt_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/user_phone"
+                android:inputType="number"
+                android:padding="10dp" />
+            <!-- Email -->
+            <TextView
+
+                style="@style/fields_titles"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/user_e_mail" />
+
+            <EditText
+                android:id="@+id/edit_txt_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/user_e_mail"
+                android:inputType="textEmailAddress"
+                android:padding="10dp" />
+            <!-- Contraseña -->
+            <TextView
+                style="@style/fields_titles"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/password_txt" />
+
+            <EditText
+                android:id="@+id/edit_txt_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/password_txt"
+                android:inputType="textPassword"
+                android:padding="10dp" />
+
+            <CheckBox
+                android:id="@+id/check_box_show_password_create_user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/show_password"
+                android:layout_gravity="center"
+                android:layout_margin="1dp"
+                style="@style/CheckboxStyle" /> <!-- Corrige el estilo aquí -->
+
+            <!-- Peso -->
+            <TextView
+                android:id="@+id/txt_weigth"
+                style="@style/fields_titles"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/user_weigth_txt" />
+
+            <EditText
+                android:id="@+id/edit_txt_weigth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/user_weigth_txt"
+                android:inputType="numberDecimal"
+                android:padding="10dp" />
+            <!-- Talla -->
+            <TextView
+                android:id="@+id/txt_heigth"
+                style="@style/fields_titles"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/user_heigth_txt" />
+
+            <EditText
+                android:id="@+id/edit_txt_heigth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/user_heigth_txt"
+                android:inputType="numberDecimal"
+                android:padding="10dp" />
+            <!-- Fecha nacimiento -->
+            <TextView
+                android:id="@+id/txt_date_of_birth"
+                style="@style/fields_titles"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/user_date_of_birth_txt" />
+
+            <EditText
+                android:id="@+id/edit_txt_date_of_birth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/user_date_of_birth_txt_formart"
+                android:inputType="date"
+                android:focusable="false"
+                android:clickable="true"
+                android:padding="10dp"
+                android:maxLines="1"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+
+
+    <include layout="@layout/edit_user_bar"
+        android:id="@+id/barra_editor"/>
+
+</LinearLayout>

@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public interface GetUserById {
 
     void onSuccess(User user);
+
     void onFailure(String errorMessage);
 
 

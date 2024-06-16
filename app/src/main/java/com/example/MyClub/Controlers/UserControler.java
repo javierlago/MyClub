@@ -11,12 +11,12 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import com.example.MyClub.Constantes.Constantes;
+import com.example.MyClub.Constants.Constantes;
 import com.example.MyClub.Interfaces.UserControllerCallback;
 import com.example.MyClub.Interfaces.GetUserById;
 import com.example.MyClub.Interfaces.GetUsersCallback;
 import com.example.MyClub.Interfaces.LoginCallback;
-import com.example.MyClub.Interfaces.UserApi;
+import com.example.MyClub.Interfaces.RetrofitApi;
 import com.example.MyClub.Models.User;
 import com.example.conectarapi.R;
 import com.google.gson.Gson;
@@ -29,10 +29,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-/** @noinspection CallToPrintStackTrace*/
+/**
+ * @noinspection CallToPrintStackTrace
+ */
 public class UserControler {
 
-    private final UserApi apiService= ApiClient.getUserApi();
+    private final RetrofitApi apiService = ApiClient.getApiClient();
 
     String rol;
 
@@ -49,17 +51,11 @@ public class UserControler {
     }
 
 
-
-
-    public void login(String usuario, String password, LoginCallback callback){
-
-
-
-
+    public void login(String usuario, String password, LoginCallback callback) {
 
 
         // Hacer la llamada a la API
-        Call<ResponseBody> call = apiService.validateUser(usuario,password);
+        Call<ResponseBody> call = apiService.validateUser(usuario, password);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
@@ -71,8 +67,8 @@ public class UserControler {
                         rol = jsonObject.getString("respuesta");
                         userId = jsonObject.getInt("id");
 
-                       // Toast.makeText(context, rol, Toast.LENGTH_SHORT).show();
-                        callback.onSuccess(rol,userId);
+                        // Toast.makeText(context, rol, Toast.LENGTH_SHORT).show();
+                        callback.onSuccess(rol, userId);
                     } catch (JSONException e) {
                         e.printStackTrace();
                         callback.onFailure(e.getMessage());
@@ -96,30 +92,30 @@ public class UserControler {
 
 
                 }
-                }
+            }
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Log.println(Log.ERROR,"error",t.getMessage());
+                Log.println(Log.ERROR, "error", t.getMessage());
                 callback.onFailure(t.getMessage());
 
             }
         });
 
     }
-    public void getUsers(String route, GetUsersCallback getUsersCallback){
 
+    public void getUsers(String route, GetUsersCallback getUsersCallback) {
 
 
         // Hacer la llamada a la API según el valor de route
         Call<JsonObject> call;
         // manejar a la routa que deseamos llamar para obtener un listado diferebte
 
-        if (Constantes.getDirectivo(context).equalsIgnoreCase(route)) {
+        if (Constantes.getManager(context).equalsIgnoreCase(route)) {
             call = apiService.getUsersDirectivo();
-        } else if (Constantes.getEntrenador(context).equals(route)) {
+        } else if (Constantes.getTrainer(context).equals(route)) {
             call = apiService.getUsersEntrenador();
-        } else if (Constantes.getAtleta(context).equals(route)) {
+        } else if (Constantes.getAthlete(context).equals(route)) {
             call = apiService.getUsersAtleta();
         } else {
             getUsersCallback.onFailure(context.getResources().getString(R.string.error_route));
@@ -133,7 +129,8 @@ public class UserControler {
                     if (responseObject != null && responseObject.has("users")) {
                         JsonArray usersArray = responseObject.getAsJsonArray("users");
                         Gson gson = new Gson();
-                        ArrayList<User> users = gson.fromJson(usersArray, new TypeToken<ArrayList<User>>(){}.getType());
+                        ArrayList<User> users = gson.fromJson(usersArray, new TypeToken<ArrayList<User>>() {
+                        }.getType());
                         getUsersCallback.onSuccess(users);
                     } else {
                         getUsersCallback.onFailure("No se encontró la clave 'users' en la respuesta");
@@ -193,7 +190,7 @@ public class UserControler {
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Log.println(Log.ERROR,"error",t.getMessage());
+                Log.println(Log.ERROR, "error", t.getMessage());
                 deleteUserCallBack.onFailure(t.getMessage());
 
             }
@@ -204,7 +201,7 @@ public class UserControler {
 
     }
 
-    public void getUserById(int userId, GetUserById getUserById){
+    public void getUserById(int userId, GetUserById getUserById) {
 
         Call<JsonObject> call = apiService.getUserById(userId);
 
@@ -213,7 +210,8 @@ public class UserControler {
             @Override
             public void onResponse(@NonNull Call<JsonObject> call, @NonNull Response<JsonObject> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    JsonObject responseObject = response.body();;
+                    JsonObject responseObject = response.body();
+                    ;
                     if (responseObject.has("user")) {
                         JsonObject userObject = responseObject.getAsJsonObject("user");
                         Gson gson = new Gson();
@@ -226,6 +224,7 @@ public class UserControler {
                     getUserById.onFailure("Error: " + response.code());
                 }
             }
+
             @Override
             public void onFailure(@NonNull Call<JsonObject> call, @NonNull Throwable t) {
                 getUserById.onFailure(t.getMessage());
@@ -236,15 +235,15 @@ public class UserControler {
 
     }
 
-    public void updateUser(int userId, User user, UserControllerCallback userControllerCallback, Context context){
+    public void updateUser(int userId, User user, UserControllerCallback userControllerCallback, Context context) {
 
-        Call<Void> call = apiService.updateUser(userId,user);
+        Call<Void> call = apiService.updateUser(userId, user);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {
-                if(response.isSuccessful()){
+                if (response.isSuccessful()) {
                     userControllerCallback.onSucces(context.getResources().getString(R.string.user_updated));
-                }else{
+                } else {
                     userControllerCallback.onFailure(context.getString(R.string.fail_update_user));
                 }
 

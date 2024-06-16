@@ -16,22 +16,25 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name="com.example.MyClub.Views.CreateUserActivity"
+            android:name="com.example.MyClub.Views.Wall.ListWallActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.MyClub.Views.EditUserActivity"
+            android:name="com.example.MyClub.Views.User.CreateUserActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.MyClub.Entrenador.EntrenadorActivity"
+            android:name="com.example.MyClub.Views.User.EditUserActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.MyClub.Atleta.AtletaActivity"
+            android:name="com.example.MyClub.Views.Entrenador.TrainerActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.MyClub.Directivo.DirectivoActivity"
+            android:name="com.example.MyClub.Views.Atleta.AthleteActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.MyClub.Views.ListUserActivity"
+            android:name="com.example.MyClub.Views.Directivo.DirectivoActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.MyClub.Views.User.ListUserActivity"
             android:exported="false" />
         <activity
             android:name="com.example.MyClub.MainActivity"

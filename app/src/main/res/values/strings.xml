@@ -8,7 +8,7 @@
     <string name="control_panel">Panel de control</string>
     <string name="entrenado">Entrenador</string>
     <string name="atleta">Atleta</string>
-    <string name="feed">Publicar Muro</string>
+    <string name="feed">Publicaciones</string>
     <string name="create">Crear</string>
     <string name="edit">Editar</string>
     <string name="delete">Borrar</string>
@@ -55,12 +55,24 @@
     <string name="error_route">Error al obtener ruta</string>
     <string name="user_created">Usuario creando con exito</string>
     <string name="fail_create_user">Fallo en la creacion del usuario</string>
-    <string name="create_user_warning_title">Aviso</string>
+    <string name="warnig">Aviso</string>
     <string name="create_user_warning_message">Debes rellenar los campos para generar un usuario</string>
-    <string name="create_user_warning_message_email">Tu email debe tener el siguiente formato aaaaaa@aaaa.com</string>
+    <string name="email_warnign_text">Tu email debe tener el siguiente formato aaaaaa@aaaa.com</string>
     <string name="create_user_warning_message_password">Tu contraseña debe tener al menos 8 caracteres</string>
     <string name="list_user_header">Lista de</string>
     <string name="create_date_warning_message">Por favor, introduce una fecha válida en el formato dd-MM-yyyy</string>
     <string name="user_date_of_birth_txt_formart">dd-MM-yyyy</string>
+    <string name="entrenamientos">Entenamientos</string>
+    <string name="publicaciones">Publicaciones</string>
+    <string name="perfil">Perfil</string>
+    <string name="logout">Salir</string>
+    <string name="acerca_de">Acerca de</string>
+    <string name="about_us">Información de la App</string>
+    <string name="about_us_message">Nombre: MiClub;\nVersion: 0.0.1\nDeveloped by: Javier Lago Amoedo\nAño: 2024</string>
+    <string name="exit">Log out</string>
+    <string name="exit_message">¿Deseas salir de la cuenta?</string>
+    <string name="error_msg_post">Error a la hora de recuperar los post</string>
+    <string name="entrenamiento">Entrenamiento</string>
+    <string name="post">Post</string>
 
 </resources>

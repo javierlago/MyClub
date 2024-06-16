@@ -11,31 +11,38 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="40dp"
+        >
 
-        <Button
+        <ImageButton
             android:id="@+id/btn_save_changes"
             style="@style/header_style"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
+            android:src="@drawable/save_button"
+            android:scaleType="fitCenter"
             android:text="@string/save_changes" />
 
-        <Button
+        <ImageButton
             android:id="@+id/btn_back"
             style="@style/header_style"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="@string/volver" />
+            android:scaleType="fitCenter"
+            android:src="@drawable/back_button" />
 
-        <Button
+
+        <ImageButton
             android:id="@+id/btn_start"
             style="@style/header_style"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="@string/inicio" />
+            android:scaleType="fitCenter"
+            android:src="@drawable/home_button" />
+
 
     </LinearLayout>
 
