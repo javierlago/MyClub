@@ -4,10 +4,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
-import com.example.MyClub.Views.Atleta.AthleteActivity;
+import com.example.MyClub.Views.Athlete.AthleteActivity;
 import com.example.MyClub.Dialogs.DialogWindow;
-import com.example.MyClub.Views.Directivo.DirectivoActivity;
-import com.example.MyClub.Views.Entrenador.TrainerActivity;
+import com.example.MyClub.Views.Manager.DirectivoActivity;
+import com.example.MyClub.Views.Trainer.TrainerActivity;
 import com.example.MyClub.Interfaces.DialogListener;
 import com.example.conectarapi.R;
 

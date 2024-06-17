@@ -1,9 +1,8 @@
-package com.example.MyClub.Views.Directivo;
+package com.example.MyClub.Views.Manager;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
@@ -11,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.MyClub.Constants.Constantes;
 import com.example.MyClub.Controlers.StartBarController;
-import com.example.MyClub.Interfaces.AdapterViewButtonClickListener;
 import com.example.MyClub.Views.User.ListUserActivity;
 import com.example.MyClub.Views.Wall.ListWallActivity;
 import com.example.conectarapi.R;

@@ -8,6 +8,19 @@ public class Post {
     String descripcion;
 
     Date fecha;
+    ArrayList<Exercice> ejercicios = new ArrayList<Exercice>();
+
+    public Post(String titulo, String descripcion, Date fecha) {
+        this.titulo = titulo;
+        this.descripcion = descripcion;
+        this.fecha = new Date();
+    }
+
+    public Post(String titulo, ArrayList<Exercice> ejercicios, Date fecha) {
+        this.titulo = titulo;
+        this.ejercicios = ejercicios;
+        this.fecha = new Date();
+    }
 
     public Date getFecha() {
         return fecha;
@@ -17,7 +30,6 @@ public class Post {
         this.fecha = fecha;
     }
 
-    ArrayList<Ejercicio> ejercicios = new ArrayList<Ejercicio>();
 
     public String getDescripcion() {
         return descripcion;
@@ -36,11 +48,15 @@ public class Post {
     }
 
 
-    public ArrayList<Ejercicio> getEjercicios() {
+    public ArrayList<Exercice> getEjercicios() {
         return ejercicios;
     }
 
-    public void setEjercicios(ArrayList<Ejercicio> ejercicios) {
-        this.ejercicios = ejercicios;
+    public void setEjercicios(ArrayList<Exercice> exercices) {
+        this.ejercicios = exercices;
     }
+
+
+
+
 }

@@ -1,8 +1,7 @@
-package com.example.MyClub.Views.Atleta;
+package com.example.MyClub.Views.Athlete;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -20,7 +19,6 @@ import com.example.MyClub.Interfaces.AllPostCallBack;
 import com.example.MyClub.Interfaces.GetUserById;
 import com.example.MyClub.Models.Post;
 import com.example.MyClub.Models.User;
-import com.example.MyClub.Views.User.EditUserActivity;
 import com.example.conectarapi.R;
 
 import java.util.List;
@@ -64,11 +62,10 @@ public class AthleteActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = context.getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
         int userId = sharedPreferences.getInt("userId", 0);
         userControler.getUserById(userId, new GetUserById() {
-            @SuppressLint("SetTextI18n")
+
             @Override
             public void onSuccess(User user) {
-                textView.setText(user.getName() + " " + user.getApellido()+ " " + user.getApellidosegundo());
-
+                textView.setText(user.getFullName());
             }
             @Override
             public void onFailure(String errorMessage) {

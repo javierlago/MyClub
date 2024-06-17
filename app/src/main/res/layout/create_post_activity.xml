@@ -1,0 +1,143 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/gradient"
+    android:gravity="center"
+    android:orientation="vertical">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?attr/colorPrimary"
+            android:padding="4dp"
+            android:src="@drawable/edit_button" />
+
+        <TextView
+            android:id="@+id/txt_create_post_title"
+            style="@style/header_style"
+            android:layout_width="0dp"
+            android:layout_weight="7"
+            android:text="@string/create_post_header" />
+    </LinearLayout>
+    <androidx.cardview.widget.CardView
+
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="0dp">
+
+            <TextView
+                style="@style/header_style"
+                android:id="@+id/text_tipo_publicacion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:textStyle="bold"
+                android:textSize="@dimen/post_title_size"
+                android:textAlignment="center"
+                android:text="@string/post"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:background="@color/black"/>
+
+            <TextView
+                style="@style/fields_titles"
+                android:id="@+id/text_titulo"
+                android:layout_marginBottom="0dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/text_box_size"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:text="@string/post_title"/>
+
+            <EditText
+                android:id="@+id/txt_post_title"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/text_box_size"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="0dp"
+                android:background="@drawable/border_radius_edit_text"
+                android:hint="@string/post_title" />
+
+            <TextView
+                style="@style/fields_titles"
+                android:id="@+id/text_descripcion_post"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/text_box_size"
+                android:layout_marginBottom="0dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:text="@string/post_description"/>
+            <EditText
+                android:id="@+id/txt_post_description"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginBottom="0dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/border_radius_edit_text"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            >
+         <Button
+             android:id="@+id/btn_save_post"
+             style="@style/Butons_Style"
+             android:layout_width="0dp"
+             android:layout_height="match_parent"
+             android:layout_weight="1"
+             android:drawableStart="@drawable/save_button"
+             android:text="@string/save"
+             android:layout_margin="5dp"
+
+             />
+            <Button
+                android:id="@+id/btn_post_clean"
+                style="@style/Butons_Style"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:drawableStart="@drawable/clean_button"
+                android:text="@string/clean"
+                android:layout_margin="5dp" />
+
+        </LinearLayout>
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+    <include layout="@layout/wall_bar" />
+
+
+</LinearLayout>

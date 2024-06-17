@@ -13,10 +13,12 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.MyClub.Constants.Constantes;
+import com.example.MyClub.Controlers.ViewsController;
+import com.example.MyClub.Dialogs.DialogWindow;
 import com.example.MyClub.Interfaces.LoginCallback;
-import com.example.MyClub.Views.Atleta.AthleteActivity;
-import com.example.MyClub.Views.Directivo.DirectivoActivity;
-import com.example.MyClub.Views.Entrenador.TrainerActivity;
+import com.example.MyClub.Views.Athlete.AthleteActivity;
+import com.example.MyClub.Views.Manager.DirectivoActivity;
+import com.example.MyClub.Views.Trainer.TrainerActivity;
 import com.example.conectarapi.R;
 
 import com.example.MyClub.Controlers.UserControler;
@@ -33,6 +35,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     CheckBox checkBox,checkBoxShowPassword;
 
     String passwordSaved;
+    DialogWindow dialogWindow;
+
+    ViewsController viewsController;
 
 
     String rol;
@@ -46,11 +51,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         listeners();
         userControler = new UserControler(this);
         SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
-        passwordSaved = sharedPreferences.getString("log_activado", "no");
+        passwordSaved = sharedPreferences.getString("log_activado", getResources().getString(R.string.no));
         Toast.makeText(this, rol, Toast.LENGTH_SHORT).show();
         Toast.makeText(this, passwordSaved, Toast.LENGTH_SHORT).show();
+        dialogWindow = new DialogWindow();
 
-        if (!passwordSaved.equalsIgnoreCase("no")) {
+        if (!passwordSaved.equalsIgnoreCase(getResources().getString(R.string.no))) {
             rol = sharedPreferences.getString("rol", "no_rol");
             if (!rol.equalsIgnoreCase("no_rol")) {
                 startSesionWithSavedPassword(rol);
@@ -88,40 +94,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                     @Override
                     public void onSuccess(String rol, int userId) {
-
-                        if (!rol.equalsIgnoreCase(getResources().getString(R.string.credenciales_invalidas))) {
-
+                        Toast.makeText(MainActivity.this, String.valueOf(userId), Toast.LENGTH_SHORT).show();
+                        if (userId>0) {
                             SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
                             SharedPreferences.Editor editor = sharedPreferences.edit();
                             editor.putInt("userId", userId);
                             editor.putString("rol", rol);
+                            Constantes.setUserRol(rol);
+                            Constantes.setUserId(userId);
                             if (checkBox.isChecked()) {
-
                                 editor.putString("log_activado", "si");
-
                             }
                             editor.apply(); // o editor.commit();
-
-
-                            if (Constantes.getManager(MainActivity.this).equalsIgnoreCase(rol)) {
-                                intent = new Intent(MainActivity.this, DirectivoActivity.class);
-                            } else if (Constantes.getAthlete(MainActivity.this).equalsIgnoreCase(rol)) {
-                                intent = new Intent(MainActivity.this, AthleteActivity.class);
-                            } else if (Constantes.getTrainer(MainActivity.this).equalsIgnoreCase(rol)) {
-                                intent = new Intent(MainActivity.this, TrainerActivity.class);
-                            }
-
+                            viewsController = new ViewsController(MainActivity.this,rol,MainActivity.this);
+                            intent = viewsController.viewChoice();
                             startActivity(intent);
                             finish();
 
                         } else {
-                            Toast.makeText(MainActivity.this, rol, Toast.LENGTH_SHORT).show();
+                            dialogWindow.infoWindow(MainActivity.this, getString(R.string.warnig),rol);
                         }
 
                     }
 
                     @Override
                     public void onFailure(String errorMessage) {
+                        Toast.makeText(MainActivity.this, "Caca", Toast.LENGTH_SHORT).show();
                         Toast.makeText(MainActivity.this, errorMessage, Toast.LENGTH_SHORT).show();
 
                     }
@@ -145,18 +143,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void startSesionWithSavedPassword(String rol) {
         Intent intent = null;
-
-        if (Constantes.getManager(MainActivity.this).equalsIgnoreCase(rol)) {
-            intent = new Intent(MainActivity.this, DirectivoActivity.class);
-        } else if (Constantes.getAthlete(MainActivity.this).equalsIgnoreCase(rol)) {
-            intent = new Intent(MainActivity.this, AthleteActivity.class);
-        } else if (Constantes.getTrainer(MainActivity.this).equalsIgnoreCase(rol)) {
-            intent = new Intent(MainActivity.this, TrainerActivity.class);
-        }
-
+        viewsController = new ViewsController(MainActivity.this,rol,MainActivity.this);
+        intent = viewsController.viewChoice();
         startActivity(intent);
         finish();
-
 
     }
 }

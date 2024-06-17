@@ -1,6 +1,6 @@
 package com.example.MyClub.Interfaces;
 
-public interface UserControllerCallback {
+public interface CallbackController {
     void onSucces(String succes);
 
     void onFailure(String errorMessage);

@@ -7,15 +7,21 @@
     tools:context="com.example.MyClub.Views.Wall.ListWallActivity"
     android:orientation="vertical">
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView_posts"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-       />
+        android:layout_above="@+id/wall_bar_id"
+        android:fillViewport="true">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView_posts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </ScrollView>
+
     <include
-        android:id="@+id/start_bar"
-        layout="@layout/start_bar"
+        android:id="@+id/wall_bar_id"
+        layout="@layout/wall_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true" />

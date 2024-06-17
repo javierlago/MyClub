@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.text.InputType;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -21,7 +20,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.MyClub.Controlers.EditBarControler;
 import com.example.MyClub.Controlers.UserControler;
 import com.example.MyClub.Interfaces.DialogListener;
-import com.example.MyClub.Interfaces.UserControllerCallback;
+import com.example.MyClub.Interfaces.CallbackController;
 import com.example.MyClub.Models.User;
 import com.example.MyClub.Dialogs.DialogWindow;
 import com.example.MyClub.Utitities.Validations;
@@ -223,7 +222,7 @@ public class EditUserActivity extends AppCompatActivity implements View.OnClickL
                                 } catch (ParseException e) {
                                     user.setFechaNacimiento(null);
                                 }
-                                userControler.updateUser(user.getId(), user, new UserControllerCallback() {
+                                userControler.updateUser(user.getId(), user, new CallbackController() {
                                     @Override
                                     public void onSucces(String succes) {
                                         fillFields(user);

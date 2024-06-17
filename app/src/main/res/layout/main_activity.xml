@@ -28,22 +28,22 @@
 
 
         <EditText
-            android:drawableStart="@drawable/user_icon"
             android:id="@+id/edit_text_user"
             android:layout_width="match_parent"
-            android:layout_height="34dp"
+            android:layout_height="@dimen/text_box_size"
             android:layout_margin="10dp"
             android:background="@drawable/border_radius_edit_text"
+            android:drawableStart="@drawable/user_icon"
             android:hint="@string/user_name"
             android:inputType="textEmailAddress"
-            android:textAlignment="center"
-            android:padding="5dp"/>
+            android:padding="5dp"
+            android:textAlignment="center" />
 
         <EditText
             android:drawableStart="@drawable/lock_button"
             android:id="@+id/edit_text_password"
             android:layout_width="match_parent"
-            android:layout_height="34dp"
+            android:layout_height="@dimen/text_box_size"
             android:layout_margin="10dp"
             android:background="@drawable/border_radius_edit_text"
             android:hint="@string/password"

@@ -12,30 +12,30 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp">
+
         <ImageButton
-            android:id="@+id/btn_profile"
+            android:id="@+id/btn_create_post"
             style="@style/header_style"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:scaleType="fitCenter"
-            android:src="@drawable/person_edit"
-            android:text="@string/perfil"
-            />
-        <ImageButton
-            android:id="@+id/btn_about"
-            style="@style/header_style"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:scaleType="fitCenter"
-            android:src="@drawable/about_us_buttton"
+            android:src="@drawable/edit_button"
             android:text="@string/acerca_de" />
 
-
+        <ImageButton
+            android:id="@+id/btn_back_wall"
+            style="@style/header_style"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:scaleType="fitCenter"
+            android:src="@drawable/back_button"
+            android:text="@string/perfil"
+            />
 
         <ImageButton
-            android:id="@+id/btn_log_out"
+            android:id="@+id/btn_log_out_wall"
             style="@style/header_style"
             android:layout_width="0dp"
             android:layout_height="match_parent"

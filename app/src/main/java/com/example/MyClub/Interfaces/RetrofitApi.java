@@ -51,7 +51,11 @@ public interface RetrofitApi {
     @POST("users/create_user")
     Call<ResponseBody> createUser(@Body User user);
 
+    @POST("posts/create_post")
+    Call<ResponseBody> createPost(@Body Post post);
 
+    @POST("posts/create_training")
+    Call<ResponseBody> createPostWithExercise(@Body Post post);
 
 
 
@@ -61,6 +65,8 @@ public interface RetrofitApi {
 
     @GET("posts/directivo")
     Call<List<Post>> getAllPostsWhitoutTrainig();
+
+
 
 }
 

@@ -15,7 +15,7 @@ import com.example.conectarapi.R;
 
 public class StartBarController {
 
-
+    static Context context;
     public static void startLogOut(Context context) {
         DialogWindow dialogWindows = new DialogWindow();
         dialogWindows.acceptCancelWindow(context, context.getResources().getString(R.string.exit), context.getResources().getString(R.string.exit_message), new DialogListener() {
@@ -66,6 +66,9 @@ public class StartBarController {
 
 
     }
+
+
+
 
 
 }

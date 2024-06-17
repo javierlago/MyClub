@@ -1,6 +1,6 @@
 package com.example.MyClub.Models;
 
-public class Ejercicio {
+public class Exercice {
     String nombre, descripcionUnidades, intensidad;
     int serie, unidades, postId;
 
@@ -28,11 +28,11 @@ public class Ejercicio {
         this.intensidad = intensidad;
     }
 
-    public int getSerie() {
+    public int getSeries() {
         return serie;
     }
 
-    public void setSerie(int serie) {
+    public void setSeries(int serie) {
         this.serie = serie;
     }
 
@@ -51,4 +51,6 @@ public class Ejercicio {
     public void setPostId(int postId) {
         this.postId = postId;
     }
+
+
 }

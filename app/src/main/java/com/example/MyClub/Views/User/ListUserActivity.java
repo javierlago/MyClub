@@ -16,13 +16,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.example.MyClub.Adapters.ListUserAdapter;
-import com.example.MyClub.Views.Atleta.AthleteActivity;
+import com.example.MyClub.Views.Athlete.AthleteActivity;
 import com.example.MyClub.Constants.Constantes;
 import com.example.MyClub.Controlers.UserControler;
-import com.example.MyClub.Views.Directivo.DirectivoActivity;
-import com.example.MyClub.Views.Entrenador.TrainerActivity;
+import com.example.MyClub.Views.Manager.DirectivoActivity;
+import com.example.MyClub.Views.Trainer.TrainerActivity;
 import com.example.MyClub.Interfaces.AdapterViewButtonClickListener;
-import com.example.MyClub.Interfaces.UserControllerCallback;
+import com.example.MyClub.Interfaces.CallbackController;
 import com.example.MyClub.Interfaces.DialogListener;
 import com.example.MyClub.Interfaces.GetUserById;
 import com.example.MyClub.Interfaces.GetUsersCallback;
@@ -107,7 +107,7 @@ public class ListUserActivity extends AppCompatActivity implements View.OnClickL
                             dialogWindows.acceptCancelWindow(ListUserActivity.this, getResources().getString(R.string.delete_user_title), message, new DialogListener() {
                                 @Override
                                 public void onApceptSelected() {
-                                    userControler.deleteUser(users.get(position).getId(), new UserControllerCallback() {
+                                    userControler.deleteUser(users.get(position).getId(), new CallbackController() {
                                         @Override
                                         public void onSucces(String succes) {
                                             Toast.makeText(ListUserActivity.this, succes, Toast.LENGTH_SHORT).show();

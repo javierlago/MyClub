@@ -44,7 +44,10 @@
         <item name="android:textSize">16sp</item>
         <!-- Puedes añadir más propiedades según tus necesidades -->
     </style>
-
+    <!-- Define el estilo de tus CardView -->
+    <style name="CardViewStyle" parent="CardView">
+        <item name="android:background">@drawable/cardview_border</item>
+    </style>
 
     <!-- Define el tema MyClub que hereda de MyClub -->
     <style name="Theme.MyClub" parent="MyClub" />

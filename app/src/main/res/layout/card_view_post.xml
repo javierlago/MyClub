@@ -54,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:visibility="gone">
-                <!-- Aquí se inflarán dinámicamente las vistas de ejercicios -->
+                <!-- Aquí se inflarán dinámicamente las vistas de exercice -->
             </LinearLayout>
             <TextView
                android:id="@+id/txt_post_date"

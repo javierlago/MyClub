@@ -8,7 +8,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -21,7 +20,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.MyClub.Constants.Constantes;
 import com.example.MyClub.Controlers.EditBarControler;
 import com.example.MyClub.Controlers.UserControler;
-import com.example.MyClub.Interfaces.UserControllerCallback;
+import com.example.MyClub.Interfaces.CallbackController;
 import com.example.MyClub.Models.User;
 import com.example.MyClub.Dialogs.DialogWindow;
 import com.example.MyClub.Utitities.Validations;
@@ -170,7 +169,7 @@ public class CreateUserActivity extends AppCompatActivity implements View.OnClic
             } else if (!Validations.isValidPassword(password.getText().toString())) {
                 dialogWindows.infoWindow(CreateUserActivity.this, getResources().getString(R.string.warnig), getResources().getString(R.string.create_user_warning_message_password));
             } else {
-                userController.createUser(getUser(), new UserControllerCallback() {
+                userController.createUser(getUser(), new CallbackController() {
                     @Override
                     public void onSucces(String succes) {
                         Toast.makeText(CreateUserActivity.this, succes, Toast.LENGTH_SHORT).show();

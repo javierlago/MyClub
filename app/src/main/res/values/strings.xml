@@ -74,5 +74,36 @@
     <string name="error_msg_post">Error a la hora de recuperar los post</string>
     <string name="entrenamiento">Entrenamiento</string>
     <string name="post">Post</string>
+    <string name="create_post_header">Crear post</string>
+    <string name="post_title">Titulo:</string>
+    <string name="post_description">Descripción</string>
+    <string name="save">Guardar</string>
+    <string name="clean">Limpiar</string>
+    <string name="error_empty_fields">Debes de rellenar todos los campos.</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="create_training_header">Crear Entrenamiento</string>
+    <string name="training">Entrenamiento.</string>
+    <string name="add_exercise">Añadir Ejercicio</string>
+    <string name="save_training">Guardar Entrenamiento</string>
+    <string name="btn_add_exercise">Añadir Ejercicio</string>
+    <string name="exercise">Ejercicio</string>
+    <string name="post_name_exercise">Nombre del exercice:</string>
+    <string name="post_units_type">Tipo de unidades</string>
+    <string name="training_units_type">Metros,Rondas,Series</string>
+    <string name="trianing_intensity">Intensidad</string>
+    <string name="training_intensities">60%,Moderada,Zona 1 ....</string>
+    <string name="training_series">Series</string>
+    <string name="trianing_unit_number">Cantidad</string>
+    <string name="empty_fields">Campos vacios</string>
+    <string name="no_exercises">Debes añadire ejercicios para almacenar un entrenamiento.</string>
+    <string name="no">no</string>
 
 </resources>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="0dp">
+
+            <TextView
+                style="@style/header_style"
+                android:id="@+id/text_exercise"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="@dimen/post_title_size"
+                android:textAlignment="center"
+                android:text="@string/exercise"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:background="@color/black"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:orientation="vertical">
+                <TextView
+                    style="@style/fields_titles"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/post_name_exercise"
+                    android:textSize="@dimen/training_card_field"
+                    android:paddingStart="5dp"
+                    android:paddingTop="5dp"/>
+                <EditText
+                    android:id="@+id/et_exercise_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/post_name_exercise"
+                    android:padding="10dp"
+                    android:textSize="@dimen/training_card_field"/>
+                <TextView
+                    style="@style/fields_titles"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/post_units_type"
+                    android:textSize="@dimen/training_card_field"
+                    android:paddingStart="5dp"
+                    android:paddingTop="5dp"/>
+                <EditText
+                    android:id="@+id/et_units_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/training_units_type"
+                    android:padding="10dp"
+                    android:textSize="@dimen/training_card_field"/>
+                <TextView
+                    style="@style/fields_titles"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/trianing_unit_number"
+                    android:textSize="@dimen/training_card_field"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="5dp"/>
+                <EditText
+                    android:id="@+id/et_units_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/training_intensities"
+                    android:textSize="@dimen/training_card_field"
+                    android:padding="10dp"
+                    android:inputType="number"/>
+                <TextView
+                    style="@style/fields_titles"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/trianing_intensity"
+                    android:textSize="@dimen/training_card_field"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="5dp"/>
+                <EditText
+                    android:id="@+id/et_intensity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/training_intensities"
+                    android:textSize="@dimen/training_card_field"
+                    android:padding="10dp" />
+                <TextView
+                    style="@style/fields_titles"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/training_series"
+                    android:textSize="@dimen/training_card_field"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="5dp"/>
+                <EditText
+                    android:id="@+id/et_series"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/training_series"
+                    android:padding="10dp"
+                    android:textSize="@dimen/training_card_field"
+                    android:inputType="number"/>
+
+
+
+
+
+
+            </LinearLayout>
+
+    <!-- This is the linearlayout with the buttons -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                >
+
+                <Button
+                    android:id="@+id/btn_add_exercise"
+                    style="@style/Butons_Style"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_weight="3"
+                    android:drawableStart="@drawable/add_box_button"
+                    android:text="@string/btn_add_exercise"
+
+                    />
+
+                <ImageButton
+                    android:id="@+id/btn_post_clean_exercise"
+                    style="@style/Butons_Style"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:drawableStart="@drawable/clean_button"
+                    android:src="@drawable/clean_button"
+                    android:scaleType="fitCenter"
+                    android:layout_margin="5dp" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

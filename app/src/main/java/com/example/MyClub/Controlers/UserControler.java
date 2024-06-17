@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import com.example.MyClub.Constants.Constantes;
-import com.example.MyClub.Interfaces.UserControllerCallback;
+import com.example.MyClub.Interfaces.CallbackController;
 import com.example.MyClub.Interfaces.GetUserById;
 import com.example.MyClub.Interfaces.GetUsersCallback;
 import com.example.MyClub.Interfaces.LoginCallback;
@@ -39,7 +39,7 @@ public class UserControler {
     String rol;
 
 
-    int userId;
+    int userId =-1;
 
 
     String message;
@@ -65,8 +65,8 @@ public class UserControler {
                         String jsonResponse = response.body().string();
                         JSONObject jsonObject = new JSONObject(jsonResponse);
                         rol = jsonObject.getString("respuesta");
-                        userId = jsonObject.getInt("id");
-
+                        if(jsonObject.has("id")){
+                        userId = jsonObject.getInt("id");}
                         // Toast.makeText(context, rol, Toast.LENGTH_SHORT).show();
                         callback.onSuccess(rol, userId);
                     } catch (JSONException e) {
@@ -150,7 +150,7 @@ public class UserControler {
     }
 
 
-    public void deleteUser(int userId, UserControllerCallback deleteUserCallBack) {
+    public void deleteUser(int userId, CallbackController deleteUserCallBack) {
 
         Call<ResponseBody> call = apiService.deleteUserById(userId);
 
@@ -235,30 +235,30 @@ public class UserControler {
 
     }
 
-    public void updateUser(int userId, User user, UserControllerCallback userControllerCallback, Context context) {
+    public void updateUser(int userId, User user, CallbackController callbackController, Context context) {
 
         Call<Void> call = apiService.updateUser(userId, user);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {
                 if (response.isSuccessful()) {
-                    userControllerCallback.onSucces(context.getResources().getString(R.string.user_updated));
+                    callbackController.onSucces(context.getResources().getString(R.string.user_updated));
                 } else {
-                    userControllerCallback.onFailure(context.getString(R.string.fail_update_user));
+                    callbackController.onFailure(context.getString(R.string.fail_update_user));
                 }
 
             }
 
             @Override
             public void onFailure(@NonNull Call<Void> call, @NonNull Throwable t) {
-                userControllerCallback.onFailure(context.getString(R.string.fail_update_user));
+                callbackController.onFailure(context.getString(R.string.fail_update_user));
             }
         });
 
 
     }
 
-    public void createUser(User user, UserControllerCallback userControllerCallback, Context context) {
+    public void createUser(User user, CallbackController callbackController, Context context) {
 
         Call<ResponseBody> call = apiService.createUser(user);
         call.enqueue(new Callback<ResponseBody>() {
@@ -271,26 +271,26 @@ public class UserControler {
                             String jsonResponse = responseBody.string();
                             JSONObject jsonObject = new JSONObject(jsonResponse);
                             message = jsonObject.getString("message");
-                            userControllerCallback.onSucces(message);
+                            callbackController.onSucces(message);
                         } else {
-                            userControllerCallback.onFailure("La respuesta no tiene cuerpo");
+                            callbackController.onFailure("La respuesta no tiene cuerpo");
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
-                        userControllerCallback.onFailure(e.getMessage());
+                        callbackController.onFailure(e.getMessage());
                     } catch (IOException e) {
                         // Manejar error de lectura de respuesta
                         e.printStackTrace();
                     }
                 } else {
-                    userControllerCallback.onFailure(message);
+                    callbackController.onFailure(message);
                 }
 
             }
 
             @Override
             public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
-                userControllerCallback.onFailure(context.getString(R.string.fail_create_user));
+                callbackController.onFailure(context.getString(R.string.fail_create_user));
             }
         });
 

@@ -1,5 +1,8 @@
 package com.example.MyClub.Controlers;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
 import com.example.MyClub.Constants.Constantes;
 
 import okhttp3.OkHttpClient;
@@ -13,6 +16,7 @@ import com.example.MyClub.Interfaces.RetrofitApi;
 public class ApiClient {
 
     private static Retrofit retrofit;
+
 
     static {
         // Configuración del interceptor de logging

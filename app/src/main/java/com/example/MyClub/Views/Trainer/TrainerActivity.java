@@ -1,4 +1,4 @@
-package com.example.MyClub.Views.Entrenador;
+package com.example.MyClub.Views.Trainer;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -63,7 +63,9 @@ public class TrainerActivity extends AppCompatActivity implements View.OnClickLi
             intent.putExtra("ApiService", Constantes.getAthlete(this));
             startActivity(intent);
         } else if (v == linearLayoutBtnEjercicios) {
-            Toast.makeText(this, "Ejercicios", Toast.LENGTH_SHORT).show();
+            intent = new Intent(TrainerActivity.this, CreateTrainingActivity.class);
+            intent.putExtra("ApiService", Constantes.getTrainer(this));
+            startActivity(intent);
         } else if (v == linearLayoutBtnPost) {
             intent = new Intent(TrainerActivity.this, ListWallActivity.class);
             intent.putExtra("ApiService", Constantes.getTrainer(this));
