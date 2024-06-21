@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,7 +15,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.MyClub.Adapters.PostAdapter;
 import com.example.MyClub.Constants.Constantes;
 import com.example.MyClub.Controlers.PostController;
+import com.example.MyClub.Controlers.StartBarController;
 import com.example.MyClub.Controlers.UserControler;
+import com.example.MyClub.Controlers.ViewsController;
 import com.example.MyClub.Interfaces.AllPostCallBack;
 import com.example.MyClub.Interfaces.GetUserById;
 import com.example.MyClub.Models.Post;
@@ -30,6 +33,11 @@ public class AthleteActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     UserControler userControler;
 
+    ImageButton btnEditProfile, btnLogOut, btnAbaoutUs;
+
+    ViewsController viewsController;
+
+
 
 
     TextView textView;
@@ -41,8 +49,11 @@ public class AthleteActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         postController = new PostController(this);
         userControler = new UserControler(this);
+        initViews();
+        listeners();
         textView = findViewById(R.id.header_text_athlete);
         setTextView(textView,this);
+        viewsController = new ViewsController(this, Constantes.getAthlete(this), this);
         postController.getAllPosts(new AllPostCallBack() {
             @Override
             public void onSuccess(List<Post> postList) {
@@ -74,5 +85,21 @@ public class AthleteActivity extends AppCompatActivity {
             }
         });
 
+    }
+    public void initViews() {
+        btnEditProfile = findViewById(R.id.btn_profile);
+        btnLogOut = findViewById(R.id.btn_log_out);
+        btnAbaoutUs = findViewById(R.id.btn_about);
+    }
+    public void listeners() {
+        btnEditProfile.setOnClickListener(v -> {
+            StartBarController.editProfile(this, Constantes.getAthlete(this), Constantes.getAthlete(this));
+        });
+        btnLogOut.setOnClickListener(v -> {
+            viewsController.backToLoginWithDialog();
+        });
+        btnAbaoutUs.setOnClickListener(v -> {
+            StartBarController.aboutUs(this);
+        });
     }
 }

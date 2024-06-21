@@ -95,6 +95,8 @@
                 android:textSize="18sp"
                 android:text="@string/post_description"/>
             <EditText
+               android:gravity="top"
+                android:padding="5dp"
                 android:id="@+id/txt_post_description"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -137,7 +139,7 @@
 
 
     </androidx.cardview.widget.CardView>
-    <include layout="@layout/wall_bar" />
+    <include layout="@layout/create_post_bar" />
 
 
 </LinearLayout>

@@ -15,11 +15,11 @@ import com.example.MyClub.Interfaces.RetrofitApi;
 
 public class ApiClient {
 
-    private static Retrofit retrofit;
+    private static final Retrofit retrofit;
 
 
     static {
-        // Configuración del interceptor de logging
+
         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 

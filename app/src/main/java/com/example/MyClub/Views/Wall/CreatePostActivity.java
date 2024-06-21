@@ -3,13 +3,16 @@ package com.example.MyClub.Views.Wall;
 import android.os.Build;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.MyClub.Constants.Constantes;
 import com.example.MyClub.Controlers.ApiClient;
 import com.example.MyClub.Controlers.PostController;
+import com.example.MyClub.Controlers.ViewsController;
 import com.example.MyClub.Dialogs.DialogWindow;
 import com.example.MyClub.Interfaces.CallbackController;
 import com.example.MyClub.Models.Post;
@@ -24,7 +27,11 @@ public class CreatePostActivity extends AppCompatActivity {
     Button btnCreatePost,btnCleanPost;
     TextView txtTitle,txtDescription;
 
+    ImageButton btnBack,btnLogOut;
+
     DialogWindow dialogWindow = new DialogWindow();
+
+    ViewsController viewsController;
     Date date = java.sql.Date.valueOf(String.valueOf(LocalDate.now()));
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +39,7 @@ public class CreatePostActivity extends AppCompatActivity {
         setContentView(R.layout.create_post_activity);
         initViews();
         listener();
+        viewsController = new ViewsController(this, Constantes.getUserRol(),this);
 
     }
     public void initViews(){
@@ -39,6 +47,8 @@ public class CreatePostActivity extends AppCompatActivity {
         btnCleanPost = findViewById(R.id.btn_post_clean);
         txtDescription = findViewById(R.id.txt_post_description);
         txtTitle = findViewById(R.id.txt_post_title);
+        btnBack = findViewById(R.id.btn_back_create_post);
+        btnLogOut = findViewById(R.id.btn_log_out_create_post);
     }
     public void listener(){
         btnCreatePost.setOnClickListener(v -> {
@@ -51,6 +61,8 @@ public class CreatePostActivity extends AppCompatActivity {
                     @Override
                     public void onSucces(String succes) {
                         dialogWindow.infoWindow(CreatePostActivity.this,getString(R.string.warnig),succes);
+                        txtTitle.setText("");
+                        txtDescription.setText("");
                     }
 
                     @Override
@@ -58,11 +70,21 @@ public class CreatePostActivity extends AppCompatActivity {
                         dialogWindow.infoWindow(CreatePostActivity.this,getString(R.string.warnig),message);
                     }
                 });
+
             }
     });
         btnCleanPost.setOnClickListener(v -> {
             txtTitle.setText("");
             txtDescription.setText("");
         });
+    btnBack.setOnClickListener(v -> {
+       viewsController.backToMain();
+    });
+    btnLogOut.setOnClickListener(v -> {
+        viewsController.backToLoginWithDialog();
+    });
+
     }
+
+
 }

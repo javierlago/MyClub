@@ -8,6 +8,14 @@ public class Constantes {
     public static String userRol;
     public static int userId;
 
+    public static String getUserRol() {
+        return userRol;
+    }
+
+    public static int getUserId() {
+        return userId;
+    }
+
     public static void setUserRol(String userRol) {
         Constantes.userRol = userRol;
     }

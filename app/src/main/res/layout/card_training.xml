@@ -61,7 +61,7 @@
                     />
 
                 <ImageButton
-                    android:id="@+id/btn_post_clean"
+                    android:id="@+id/btn_post_trainig_clean"
                     style="@style/Butons_Style"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"

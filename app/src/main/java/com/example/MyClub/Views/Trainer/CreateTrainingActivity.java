@@ -4,20 +4,19 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.MyClub.Adapters.TrainingAdapter;
+import com.example.MyClub.Constants.Constantes;
 import com.example.MyClub.Controlers.PostController;
+import com.example.MyClub.Controlers.ViewsController;
 import com.example.MyClub.Dialogs.DialogWindow;
+import com.example.MyClub.Interfaces.AdapterViewButtonClickListener;
 import com.example.MyClub.Interfaces.CallbackController;
+import com.example.MyClub.Interfaces.DialogListener;
 import com.example.MyClub.Models.Exercice;
 import com.example.MyClub.Models.Post;
 import com.example.conectarapi.R;
@@ -29,7 +28,7 @@ public class CreateTrainingActivity extends AppCompatActivity {
 
 
     Button btnAddExercise, btnSaveTraining;
-    ImageButton btnCleanTraining,btnCleanExercise;
+    ImageButton btnCleanTraining,btnCleanExercise,btnBack,btnLogOut;
 
     EditText  etExerciseName, etExerciseSeries, etUnitsNumber, etUnitsType, etExerciseIntensity;
 
@@ -42,6 +41,9 @@ public class CreateTrainingActivity extends AppCompatActivity {
 
     RecyclerView recyclerViewExercises;
     PostController postController;
+    ViewsController viewsController ;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,15 +51,38 @@ public class CreateTrainingActivity extends AppCompatActivity {
         DialogWindow dialogWindow = new DialogWindow();
         initViews();
         listeners();
-        trainingAdapter = new TrainingAdapter(exercices, this);
+        trainingAdapter = new TrainingAdapter(exercices, new AdapterViewButtonClickListener() {
+            @Override
+            public void onEditButtonClick(int position) {
+                dialogWindow.acceptCancelWindow(CreateTrainingActivity.this, getResources().getString(R.string.warnig), getResources().getString(R.string.delete_exercise), new DialogListener() {
+                    @Override
+                    public void onApceptSelected() {
+                        exercices.remove(position);
+                        trainingAdapter.notifyItemRemoved(position);
+                    }
+
+                    @Override
+                    public void onCancelSelected() {
+
+                    }
+                });
+
+            }
+
+            @Override
+            public void onDeleteButtonClick(int position) {
+
+            }
+        });
         recyclerViewExercises.setAdapter(trainingAdapter);
         recyclerViewExercises.setLayoutManager(new LinearLayoutManager(this));
         postController = new PostController(this);
+        viewsController = new ViewsController(this, Constantes.getUserRol(),this);
     }
     public void initViews() {
         btnAddExercise = findViewById(R.id.btn_add_exercise);
         btnSaveTraining = findViewById(R.id.btn_save_training);
-        btnCleanTraining = findViewById(R.id.btn_post_clean);
+        btnCleanTraining = findViewById(R.id.btn_post_trainig_clean);
         btnCleanExercise = findViewById(R.id.btn_post_clean_exercise);
         etExerciseName = findViewById(R.id.et_exercise_name);
         etUnitsType = findViewById(R.id.et_units_type);
@@ -65,6 +90,8 @@ public class CreateTrainingActivity extends AppCompatActivity {
         etExerciseIntensity = findViewById(R.id.et_intensity);
         etExerciseSeries = findViewById(R.id.et_series);
         recyclerViewExercises = findViewById(R.id.recyclerView_exercises);
+        btnBack = findViewById(R.id.btn_back_create_post);
+        btnLogOut = findViewById(R.id.btn_log_out_create_post);
     }
     /*
     * Method to fill the array with the EditTexts
@@ -131,10 +158,29 @@ public class CreateTrainingActivity extends AppCompatActivity {
 
         });
         btnCleanTraining.setOnClickListener(v -> {
-            // Clean training
+            dialogWindow.acceptCancelWindow(this, getResources().getString(R.string.warnig), getResources().getString(R.string.clean_training), new DialogListener() {
+                @Override
+                public void onApceptSelected() {
+                    cleanFields(editTexts);
+                    exercices.clear();
+                    trainingAdapter.notifyDataSetChanged();
+                }
+                @Override
+                public void onCancelSelected() {
+
+                }
+            }
+
+            );
         });
         btnCleanExercise.setOnClickListener(v -> {
-            // Clean exercise
+            cleanFields(editTexts);
+        });
+        btnBack.setOnClickListener(v -> {
+            viewsController.backToMain();
+        });
+        btnLogOut.setOnClickListener(v -> {
+            viewsController.backToLoginWithDialog();
         });
     }
 

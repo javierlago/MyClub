@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -73,6 +74,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PublicacionVie
             textViewDate.setText(Validations.dateConverter(post.getFecha()));
 
 
+
             // Si el array de ejercicios no está vacío, muestra los ejercicios y oculta la descripción
             if (post.getEjercicios() != null && !post.getEjercicios().isEmpty()){
                 tipoPublicacion.setText(context.getResources().getString(R.string.entrenamiento));
@@ -82,7 +84,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PublicacionVie
                 layoutEjercicios.removeAllViews(); // Limpiar ejercicios anteriores
 
                 for (Exercice exercice : post.getEjercicios()) {
+
                     View ejercicioView = LayoutInflater.from(itemView.getContext()).inflate(R.layout.item_ejercicio, layoutEjercicios, false);
+                    ImageButton btnDelete = ejercicioView.findViewById(R.id.btn_erase_exercise);
                     TextView textNombre = ejercicioView.findViewById(R.id.text_nombre);
                     TextView textSeries = ejercicioView.findViewById(R.id.text_series);
                     TextView textUnidades = ejercicioView.findViewById(R.id.text_unidades);
@@ -93,6 +97,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PublicacionVie
                     textUnidades.setText(String.valueOf(exercice.getUnidades()));
                     textDescripcionUnidades.setText(exercice.getDescripcionUnidades());
                     textDescripcionIntensidad.setText(exercice.getIntensidad());
+                    btnDelete.setVisibility(View.GONE);
                     layoutEjercicios.addView(ejercicioView);
                 }
             } else{

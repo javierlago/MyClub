@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.example.MyClub.Adapters.ListUserAdapter;
+import com.example.MyClub.Controlers.ViewsController;
 import com.example.MyClub.Views.Athlete.AthleteActivity;
 import com.example.MyClub.Constants.Constantes;
 import com.example.MyClub.Controlers.UserControler;
@@ -49,6 +50,8 @@ public class ListUserActivity extends AppCompatActivity implements View.OnClickL
     String userRol;
     ListUserAdapter listUserAdapter;
 
+    ViewsController viewsController;
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -66,6 +69,7 @@ public class ListUserActivity extends AppCompatActivity implements View.OnClickL
         userControler = new UserControler(this);
         txtTitle = findViewById(R.id.header_text);
         setHeader(route);
+        viewsController = new ViewsController(this,Constantes.getUserRol(),ListUserActivity.this);
         Toast.makeText(this, route, Toast.LENGTH_SHORT).show();
 
 
@@ -160,24 +164,13 @@ public class ListUserActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onClick(View v) {
+        Intent intent = new Intent();
         if (v == btnCreateUser) {
-            Intent intent = new Intent(ListUserActivity.this, CreateUserActivity.class);
+            intent = new Intent(ListUserActivity.this, CreateUserActivity.class);
             intent.putExtra("ApiService", route);
             startActivity(intent);
         } else if (v == btnBack) {
-            if (userRol.equalsIgnoreCase(getResources().getString(R.string.directivo))) {
-                Intent intent = new Intent(ListUserActivity.this, DirectivoActivity.class);
-                intent.putExtra("ApiService", userRol);
-                startActivity(intent);
-            } else if (userRol.equalsIgnoreCase(getResources().getString(R.string.entrenador))) {
-                Intent intent = new Intent(ListUserActivity.this, TrainerActivity.class);
-                intent.putExtra("ApiService", userRol);
-                startActivity(intent);
-            } else if (userRol.equalsIgnoreCase(getResources().getString(R.string.atleta))) {
-                Intent intent = new Intent(ListUserActivity.this, AthleteActivity.class);
-                intent.putExtra("ApiService", userRol);
-                startActivity(intent);
-            }
+            viewsController.backToMain();
         }
     }
 

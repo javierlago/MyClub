@@ -76,7 +76,7 @@
                     android:id="@+id/et_units_number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/training_intensities"
+                    android:hint="@string/trianing_unit_number"
                     android:textSize="@dimen/training_card_field"
                     android:padding="10dp"
                     android:inputType="number"/>

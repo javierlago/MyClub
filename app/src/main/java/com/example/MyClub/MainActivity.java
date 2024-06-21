@@ -16,9 +16,6 @@ import com.example.MyClub.Constants.Constantes;
 import com.example.MyClub.Controlers.ViewsController;
 import com.example.MyClub.Dialogs.DialogWindow;
 import com.example.MyClub.Interfaces.LoginCallback;
-import com.example.MyClub.Views.Athlete.AthleteActivity;
-import com.example.MyClub.Views.Manager.DirectivoActivity;
-import com.example.MyClub.Views.Trainer.TrainerActivity;
 import com.example.conectarapi.R;
 
 import com.example.MyClub.Controlers.UserControler;
@@ -107,8 +104,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             }
                             editor.apply(); // o editor.commit();
                             viewsController = new ViewsController(MainActivity.this,rol,MainActivity.this);
-                            intent = viewsController.viewChoice();
-                            startActivity(intent);
+                            viewsController.backToMain();
                             finish();
 
                         } else {
@@ -142,10 +138,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void startSesionWithSavedPassword(String rol) {
-        Intent intent = null;
         viewsController = new ViewsController(MainActivity.this,rol,MainActivity.this);
-        intent = viewsController.viewChoice();
-        startActivity(intent);
+        viewsController.backToMain();
         finish();
 
     }

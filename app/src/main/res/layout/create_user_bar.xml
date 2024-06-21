@@ -14,19 +14,23 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
     <Button
+        android:drawableStart="@drawable/add_box_button"
         style="@style/header_style"
         android:id="@+id/btn_create_user"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="@string/create_user"/>
+        android:text="@string/create_user"
+        android:paddingLeft="10dp"/>
 
     <Button
+        android:drawableStart="@drawable/back_button"
         android:id="@+id/btn_back"
         style="@style/header_style"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="wrap_content"
-        android:text="@string/back"/>
+        android:text="@string/back"
+        android:paddingLeft="10dp"/>
     </LinearLayout>
 </LinearLayout>

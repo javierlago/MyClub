@@ -68,7 +68,7 @@
     <string name="logout">Salir</string>
     <string name="acerca_de">Acerca de</string>
     <string name="about_us">Información de la App</string>
-    <string name="about_us_message">Nombre: MiClub;\nVersion: 0.0.1\nDeveloped by: Javier Lago Amoedo\nAño: 2024</string>
+    <string name="about_us_message">Nombre: MyClapp;\nVersion: 0.0.1\nDeveloped by: Javier Lago Amoedo\nAño: 2024</string>
     <string name="exit">Log out</string>
     <string name="exit_message">¿Deseas salir de la cuenta?</string>
     <string name="error_msg_post">Error a la hora de recuperar los post</string>
@@ -95,7 +95,7 @@
     <string name="save_training">Guardar Entrenamiento</string>
     <string name="btn_add_exercise">Añadir Ejercicio</string>
     <string name="exercise">Ejercicio</string>
-    <string name="post_name_exercise">Nombre del exercice:</string>
+    <string name="post_name_exercise">Nombre del ejercicio:</string>
     <string name="post_units_type">Tipo de unidades</string>
     <string name="training_units_type">Metros,Rondas,Series</string>
     <string name="trianing_intensity">Intensidad</string>
@@ -105,5 +105,6 @@
     <string name="empty_fields">Campos vacios</string>
     <string name="no_exercises">Debes añadire ejercicios para almacenar un entrenamiento.</string>
     <string name="no">no</string>
-
+    <string name="clean_training">Quieres borrar todos los ejercicios del entrenamiento?</string>
+    <string name="delete_exercise">¿Deseas eliminar este ejercicio?</string>
 </resources>

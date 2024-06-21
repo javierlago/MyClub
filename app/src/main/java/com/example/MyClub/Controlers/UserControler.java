@@ -51,7 +51,7 @@ public class UserControler {
     }
 
 
-    public void login(String usuario, String password, LoginCallback callback) {
+    public void login(String usuario, String password, LoginCallback loginCallback) {
 
 
         // Hacer la llamada a la API
@@ -68,14 +68,14 @@ public class UserControler {
                         if(jsonObject.has("id")){
                         userId = jsonObject.getInt("id");}
                         // Toast.makeText(context, rol, Toast.LENGTH_SHORT).show();
-                        callback.onSuccess(rol, userId);
+                        loginCallback.onSuccess(rol, userId);
                     } catch (JSONException e) {
                         e.printStackTrace();
-                        callback.onFailure(e.getMessage());
+                        loginCallback.onFailure(e.getMessage());
                     } catch (IOException e) {
                         // Manejar error de lectura de respuesta
                         e.printStackTrace();
-                        callback.onFailure(e.getMessage());
+                        loginCallback.onFailure(e.getMessage());
                     }
                 } else {
                     // El código de estado de la respuesta no es exitoso
@@ -97,7 +97,7 @@ public class UserControler {
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
                 Log.println(Log.ERROR, "error", t.getMessage());
-                callback.onFailure(t.getMessage());
+                loginCallback.onFailure(t.getMessage());
 
             }
         });
